@@ -1,0 +1,5 @@
+"Eu não apenas escrevo código; eu construo sistemas que resolvem problemas do mundo real. Com formação em Tecnologia de Energias Renováveis e Linguística, eu faço a ponte entre requisitos técnicos complexos e soluções digitais funcionais e centradas no usuário.
+
+Minha abordagem é pragmática e de alta velocidade: utilizo fluxos de trabalho de IA moderna e ferramentas Low-Code/No-Code para arquitetar e implantar aplicações robustas — de Mobile (Android/Kotlin) a integrações Web (React/APIs). Seja automatizando fluxos de trabalho empresariais ou desenvolvendo ferramentas personalizadas do zero, meu foco está na responsabilidade, na lógica e nos resultados.
+
+Explore o meu trabalho abaixo para ver como transformo desafios de negócios 'bagunçados' em uma realidade digital limpa e escalável."
