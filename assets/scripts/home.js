@@ -14,12 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let vh = window.innerHeight;
         let progress = Math.min(scrollY / (vh * 0.8), 1); // Progresso de 0 a 1
 
-       // Animação da Logo (Diminui e sobe)
-        let scale = 1 - (0.7 * progress); // Vai de 1 até 0.3
-        let translateY = (progress * -150); // Move pra cima
-        logo.style.transform = `translateY(calc(-50% + ${translateY}px)) scale(${scale})`;        // Animação da Foto (Zoom In Gradativo)
-        profile.style.transform = `scale(${progress})`;
-        profile.style.opacity = progress;
+       // --- CÓDIGO PARA VOLTAR AO CENTRO ---
+        // Animação da Logo (Diminui e sobe, mas mantém o centro horizontal)
+        let scale = 1 - (0.8 * progress); // Encolhe conforme o scroll
+        
+        // Mantém moveX em 0 para ficar centralizado
+        let moveX = 0; 
+        // Mantém o movimento para cima (ajuste o valor se quiser que suba mais ou menos)
+        let moveY = progress * -35; 
+        
+        // Aplica a transformação mantendo a base do translate em -50%
+        logo.style.transform = `translate(calc(-50% + ${moveX}vw), calc(-50% + ${moveY}vh)) scale(${scale})`;
 
         // Troca de Fundo para #000639 (Página 2) e entrada de texto
         if (progress > 0.8) {
