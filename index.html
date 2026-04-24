@@ -1,40 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicaDev | Portfolio</title>
-    
-    <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico">
-    
+    <title>MicaDev - Portfólio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-    <meta name="description" content="Micael Silva - Software Developer especializado em soluções integradas e IA.">
-
-    <style>
-        /* Estilos base para evitar 'saltos' durante as animações de Scroll Reveal */
-        body { 
-            margin: 0; 
-            font-family: 'Open Sans', sans-serif; 
-            background-color: #000; 
-            overflow-x: hidden; 
-            color: #ffffff;
-        }
-        #root { 
-            width: 100%; 
-            min-height: 100vh;
-        }
-        /* Garantia de suavidade no scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/global.css">
 </head>
 <body>
-    <noscript>Você precisa ativar o JavaScript para visualizar este portfólio.</noscript>
-    <div id="root"></div>
-    
-    </body>
+
+    <nav class="lang-selector">
+        <button onclick="changeLang('pt')">PT</button>
+        <button onclick="changeLang('en')">EN</button>
+        <button onclick="changeLang('es')">ES</button>
+    </nav>
+
+    <div class="scroll-container">
+        <div class="sticky-hero" id="page-2-bg">
+            <img src="./images/logo.png" alt="MicaDev Logo" id="main-logo">
+            
+            <div class="profile-container">
+                <img src="./images/perfil.png" alt="Micael" id="profile-img">
+                
+                <div class="skills-wrapper" id="skills-list">
+                    <div class="skill-text top-skill" data-i18n="skill_1">1 - Technical Problem Solver</div>
+                    <div class="skill-text mid-skill" data-i18n="skill_2">2 - Product-Minded Integrator</div>
+                    <div class="skill-text bot-skill" data-i18n="skill_3">3 - AI-Driven Developer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="about-section" id="page-3">
+        <div class="about-content reveal-fade">
+            <div id="aboutme-text-container" class="text-render">
+                </div>
+            <img src="./images/sparkles.png" alt="Sparkles" class="sparkles-icon reveal-zoom">
+        </div>
+    </section>
+
+    <section class="project-section slide-in-left">
+        <div class="project-container">
+            <h2 class="project-title" style="color: white;"><strong>Lights</strong>Blocker</h2>
+            <div class="project-content">
+                <div class="img-wrapper">
+                    <img src="./images/content/lightsblocker.png" alt="LightsBlocker App">
+                </div>
+                <div class="text-wrapper" id="projectlb-text-container">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section slide-in-left">
+        <div class="project-container">
+            <h2 class="project-title" style="color: #4CAF50;">Mundo do Jeans</h2>
+            <div class="project-content">
+                <div class="img-wrapper">
+                    <img src="./images/content/mundodojeans.png" alt="Mundo do Jeans POS">
+                </div>
+                <div class="text-wrapper" id="projectmj-text-container">
+                    </div>
+            </div>
+            
+            <div class="horizontal-gallery" id="mj-gallery">
+                <img src="./images/content/mj1.png" alt="Galeria 1" class="gallery-item">
+                <img src="./images/content/mj2.png" alt="Galeria 2" class="gallery-item">
+                <img src="./images/content/mj3.png" alt="Galeria 3" class="gallery-item">
+                <img src="./images/content/mj4.png" alt="Galeria 4" class="gallery-item">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="./images/logo.png" alt="MicaDev Logo Pequena" class="footer-logo">
+        <div class="footer-contact">
+            <p>+55 84 9 9100-0682</p>
+            <p>Ceará-Mirim, Rio Grande do Norte, Brazil - 59570-000</p>
+        </div>
+    </footer>
+
+    <dialog id="image-modal">
+        <button id="close-modal">X</button>
+        <img id="modal-img" src="" alt="Zoom Imagem">
+    </dialog>
+
+    <script type="module" src="./assets/scripts/home.js"></script>
+</body>
 </html>
