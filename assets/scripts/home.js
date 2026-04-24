@@ -14,17 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let vh = window.innerHeight;
         let progress = Math.min(scrollY / (vh * 0.8), 1); // Progresso de 0 a 1
 
-       // --- CÓDIGO PARA VOLTAR AO CENTRO ---
-        // Animação da Logo (Diminui e sobe, mas mantém o centro horizontal)
-        let scale = 1 - (0.8 * progress); // Encolhe conforme o scroll
-        
-        // Mantém moveX em 0 para ficar centralizado
-        let moveX = 0; 
-        // Mantém o movimento para cima (ajuste o valor se quiser que suba mais ou menos)
-        let moveY = progress * -35; 
-        
-        // Aplica a transformação mantendo a base do translate em -50%
-        logo.style.transform = `translate(calc(-50% + ${moveX}vw), calc(-50% + ${moveY}vh)) scale(${scale})`;
+      // --- CÓDIGO CORRIGIDO PARA SUBIR RETO NO CENTRO ---
+// 1. Ocupa o progresso do scroll (0 a 1)
+// 2. Mantém o X fixo em -50% (centro real)
+// 3. Altera apenas o Y e a Escala
+
+let scale = 1 - (0.8 * progress); // Encolhe até 20% do tamanho original
+let moveY = progress * -35;       // Sobe 35vh
+
+// Usamos apenas transform simples, sem calc no X, para não haver erro de interpretação
+logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scale})`;
 
         // Troca de Fundo para #000639 (Página 2) e entrada de texto
         if (progress > 0.8) {
