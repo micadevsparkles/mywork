@@ -76,6 +76,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    z-index: 5; /* Garante que a foto esteja em uma camada visível */
 }
 
 #profile-img {
@@ -83,8 +84,10 @@ body {
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    transform: scale(0);
-    opacity: 0;
+    /* Removi o transform: scale(0) daqui para evitar conflito com o JS */
+    opacity: 0; 
+    display: block; /* Garante que o elemento ocupe espaço */
+    transition: opacity 0.1s linear; /* Transição suave apenas para a opacidade */
 }
 
 .skills-wrapper {
