@@ -1,0 +1,1 @@
+"Un ecosistema de productividad multiplataforma desarrollado con Kotlin y flujos de trabajo asistidos por IA. Integra de manera compleja la lógica de bloqueo de contenido con una API de estado en tiempo real basada en la metodología 'Cold Turkey'."
