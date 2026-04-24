@@ -14,11 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let vh = window.innerHeight;
         let progress = Math.min(scrollY / (vh * 0.8), 1); // Progresso de 0 a 1
 
-        // Animação da Logo (Diminui e sobe)
-        let scale = 1 - (0.7 * progress); // Vai de 1 até 0.3
-        let translateY = (progress * -150); // Move pra cima
-        logo.style.transform = `translateY(calc(-50% + ${translateY}px)) scale(${scale})`;
-
+        // Animação da Logo (Diminui e move para o topo esquerdo)
+        let scale = 1 - (0.8 * progress); // Encolhe o tamanho
+        // Move -35vw (para a esquerda) e -35vh (para cima)
+        let moveX = progress * -35; 
+        let moveY = progress * -35; 
+        // Aplica o calculo subtraindo dos -50% originais do CSS que mantinham ela no centro
+        logo.style.transform = `translate(calc(-50% + ${moveX}vw), calc(-50% + ${moveY}vh)) scale(${scale})`;
         // Animação da Foto (Zoom In Gradativo)
         profile.style.transform = `scale(${progress})`;
         profile.style.opacity = progress;
