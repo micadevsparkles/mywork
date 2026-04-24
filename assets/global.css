@@ -112,6 +112,7 @@ body {
 .bot-skill { transform: rotate(10deg); }
 
 /* Seção 3: About */
+/* Seção 3: About */
 .about-section {
     min-height: 100vh;
     background-color: var(--bg-blue);
@@ -121,19 +122,30 @@ body {
     padding: 50px 10%;
     position: relative;
 }
+
+/* Novo layout lado a lado */
 .about-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Coloca lado a lado */
     align-items: center;
-    gap: 30px;
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
-.sparkles-icon {
-    width: 100px;
+    justify-content: space-between;
+    gap: 60px; /* Distância entre a estrela e o texto */
+    max-width: 1000px;
+    width: 100%;
 }
 
+.sparkles-icon {
+    width: 120px;
+    flex-shrink: 0; /* Impede que o ícone seja esmagado pelo texto */
+}
+
+/* Novo estilo específico para a caixa de texto */
+.text-render {
+    text-align: right; /* Alinha o texto à direita */
+    font-size: 1.2rem;
+    line-height: 1.6;
+    flex: 1; /* Faz o texto ocupar todo o espaço restante do container */
+}
 /* Seções de Projetos (Páginas 4 e 5+) */
 .project-section {
     width: 100vw;
