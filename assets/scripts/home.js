@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let progress = Math.min(scrollY / (vh * 0.8), 1); // Progresso de 0 a 1
 
         // --- ANIMAÇÃO DA LOGO ---
-        let scaleLogo = 1 - (0.3 * progress); 
+        let scaleLogo = 1 - (0.4 * progress); 
         let moveY = progress * -35; 
 
         // Mantém centralizado no X (-50%) e sobe no Y
