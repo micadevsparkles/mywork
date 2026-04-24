@@ -14,21 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let vh = window.innerHeight;
         let progress = Math.min(scrollY / (vh * 0.8), 1); // Progresso de 0 a 1
 
-      // --- CÓDIGO CORRIGIDO PARA SUBIR RETO NO CENTRO ---
-// 1. Ocupa o progresso do scroll (0 a 1)
-// 2. Mantém o X fixo em -50% (centro real)
-// 3. Altera apenas o Y e a Escala
+        // --- ANIMAÇÃO DA LOGO ---
+        let scaleLogo = 1 - (0.8 * progress); 
+        let moveY = progress * -35; 
 
-let scale = 1 - (0.8 * progress); // Encolhe até 20% do tamanho original
-let moveY = progress * -35;       // Sobe 35vh
+        // Mantém centralizado no X (-50%) e sobe no Y
+        logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scaleLogo})`;
 
-// Usamos apenas transform simples, sem calc no X, para não haver erro de interpretação
-logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scale})`;
+        // --- ANIMAÇÃO DA FOTO DE PERFIL (REINTEGRADA) ---
+        // Aplica a opacidade e escala baseada no progresso para a foto aparecer
+        if (profile) {
+            profile.style.opacity = progress;
+            profile.style.transform = `scale(${progress})`;
+        }
 
         // Troca de Fundo para #000639 (Página 2) e entrada de texto
         if (progress > 0.8) {
             heroBg.style.backgroundColor = 'var(--bg-blue)';
-            skillsList.classList.add('active'); // Aciona o Slide Left In
+            skillsList.classList.add('active'); 
         } else {
             heroBg.style.backgroundColor = 'var(--bg-black)';
             skillsList.classList.remove('active');
@@ -42,9 +45,8 @@ logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scale})
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // observer.unobserve(entry.target); // Descomente se quiser animar apenas 1 vez
             } else {
-                entry.target.classList.remove('visible'); // Permite que a animação aconteça novamente
+                entry.target.classList.remove('visible'); 
             }
         });
     }, observerOptions);
@@ -58,13 +60,11 @@ logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scale})
     initProjectLB();
 
     // --- 4. Sistema Base de Idioma (i18n e .txt) ---
-    // O padrão será 'pt'.
     window.changeLang = function(lang) {
         fetchTextData('aboutme', lang, 'aboutme-text-container');
         fetchTextData('projectLB', lang, 'projectlb-text-container');
         fetchTextData('projectMJ', lang, 'projectmj-text-container');
         
-        // Tradução manual da página 2 (Hardcoded via attributes)
         const dict = {
             'pt': ['1 - Solucionador Técnico de Problemas', '2 - Integrador com Foco em Produto', '3 - Desenvolvedor Impulsionado por IA'],
             'en': ['1 - Technical Problem Solver', '2 - Product-Minded Integrator', '3 - AI-Driven Developer'],
@@ -76,27 +76,23 @@ logo.style.transform = `translate(-50%, calc(-50% + ${moveY}vh)) scale(${scale})
         document.querySelector('[data-i18n="skill_3"]').innerText = dict[lang][2];
     };
 
-    // Carrega o idioma inicial
     window.changeLang('pt');
 });
 
-// Função para injetar conteúdo dos TXTs no HTML
 function fetchTextData(fileBaseName, lang, targetId) {
-    // Para simplificar a criação dos seus arquivos, ele tenta buscar com sufixo (ex: aboutme_pt.txt)
-    // Se você não for usar arquivos diferentes para idiomas inicialmente, renomeie no repositório.
     const url = `./texts/${fileBaseName}_${lang}.txt`; 
     
     fetch(url)
         .then(response => {
             if(!response.ok) {
-                // Tenta carregar o arquivo sem sufixo como fallback
                 return fetch(`./texts/${fileBaseName}.txt`);
             }
             return response;
         })
         .then(response => response.text())
         .then(text => {
-            document.getElementById(targetId).innerHTML = text;
+            const target = document.getElementById(targetId);
+            if (target) target.innerHTML = text;
         })
         .catch(err => console.log('Arquivo txt não encontrado para: ' + fileBaseName));
 }
