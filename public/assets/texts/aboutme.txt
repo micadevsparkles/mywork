@@ -1,0 +1,1 @@
+A cross-platform productivity ecosystem built with Kotlin and AI-assisted workflows. It complex integrates content-blocking logic with a real-time status API based on the 'Cold Turkey' methodology.
