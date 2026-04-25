@@ -319,10 +319,78 @@ footer {
 .slide-in-left { opacity: 0; transform: translateX(-150px); transition: all 1s ease-out; }
 .slide-in-left.visible { opacity: 1; transform: translateX(0); }
 
-/* Responsividade Básica */
+/* Responsividade Básica (Substitua todo este bloco final no global.css) */
 @media (max-width: 768px) {
-    .profile-container { flex-direction: column; gap: 20px; top: 25vh;}
-    .skills-wrapper { align-items: center; gap: 40px;}
-    .skill-text { transform: none !important; font-size: 1rem;}
-    .project-header { flex-direction: column; align-items: flex-start; }
+    
+    /* --- Correção de overflow e ajuste da Hero (Páginas 1 e 2) --- */
+    .profile-container { 
+        flex-direction: column; 
+        gap: 15px; 
+        top: 8vh; /* Sobe a foto para ficar mais perto da logo animada */
+    }
+
+    #profile-img {
+        width: 180px; /* Reduz levemente para garantir que os 3 textos caibam embaixo */
+        height: 180px;
+    }
+
+    .skills-wrapper { 
+        align-items: center; 
+        gap: 15px; /* Reduz o espaço entre as frases para não vazarem da tela */
+        width: 100%;
+    }
+
+    .skill-text { 
+        transform: none !important; 
+        font-size: 1rem;
+        white-space: normal; /* ESSENCIAL: Permite quebra de linha, resolvendo o bug do site ficar largo */
+        text-align: center; /* Centraliza as frases embaixo da foto */
+        padding: 0 15px;
+    }
+
+    /* --- Seção 3: About (Estrela em cima, texto justificado) --- */
+    .about-content {
+        flex-direction: column; /* Coloca a estrela em cima e o texto embaixo */
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .sparkles-icon {
+        width: 120px; /* Reduz a estrela no mobile */
+    }
+
+    .text-render {
+        text-align: justify; /* Deixa o texto justificado como pediu */
+        font-size: 1rem;
+    }
+
+    /* --- Seções de Projetos (Logo e título lado a lado) --- */
+    .project-header { 
+        flex-direction: row; /* Força a ficar lado a lado no celular */
+        align-items: center; 
+        gap: 15px; 
+    }
+
+    .project-logo {
+        width: 55px; /* Reduz a moldura da logo */
+        height: 55px;
+        border-radius: 12px;
+        border-width: 2px;
+    }
+
+    .project-title {
+        font-size: 1.5rem; /* Reduz o título para caber do lado da logo */
+    }
+
+    .project-content { 
+        flex-direction: column; 
+    }
+    
+    .project-content .img-wrapper img { 
+        max-width: 100%; 
+    }
+
+    .project-actions {
+        justify-content: center; /* Centraliza os botões no mobile para ficar mais bonito */
+    }
 }
